@@ -10,7 +10,7 @@ body {
     --usr-txt-color: hsl(300, 24%, 96%);
 
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     flex-direction: column;
     justify-content: center;
@@ -39,7 +39,7 @@ header {
 header h1 {
     font-size: clamp(2.5rem, 3vw, 3.5rem);
     font-weight: 700;
-    line-height: 2rem;
+    line-height: clamp(2rem, 3vw, 3.5rem);
     color: var(--usr-bg-color);
     margin: 0;
 }
@@ -66,7 +66,7 @@ header p {
 
     color: var(--usr-bg-color);
     background: var(--usr-txt-color);
-    padding: 1em;
+    padding: 1em 0em;
     border-radius: .5em;
 }
 
@@ -82,6 +82,7 @@ header p {
     display: flex;
     gap: .35em;
     margin-bottom: .5em;
+    margin-left: 1em;
 }
 
 .raters__cont h3 {
@@ -145,16 +146,52 @@ header p {
 
 .user__text {
     font-weight: 400;
-    font-size: .75lh;
+    font-size: 1lh;
     line-height: 1.3em;
     margin: 0;
 }
 
-@media (max-width: 1030px) {
+@media (min-width: 1031px) and (max-width: 1222px) {
     main {
-        grid-template-columns: auto;
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+
+    .raters {
+        grid-row: 2;
+        width: 100%;
+    }
+
+    .persons {
+        grid-row: 3;
+    }
+
+    .raters__cont:first-child {
+        transform: translateX(0);
+        align-self: flex-start;
+    }
+
+    .raters__cont:nth-child(2) {
+        transform: translateX(0);
+        align-self: center;
+    }
+}
+
+@media (max-width: 1030px) {
+
+    body {
+        height: auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    main {
+        grid-template-columns: 1fr;
         grid-template-rows: auto;
-        margin: 1rem;
+        height: auto;
+        width: 90%;
+        max-width: 100%;
+        margin: 5rem;
     }
 
     header {
@@ -162,16 +199,18 @@ header p {
     }
 
     .raters {
-        
+        justify-content: center;
+        align-items: center;
+        width: auto;
     }
 
     .raters__cont {
-        display: flex;
+        margin-block: 1em 0em;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        
         gap: 0;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
     }
 
     .raters__cont:first-child {
@@ -185,6 +224,7 @@ header p {
     .persons {
         display: flex;
         flex-direction: column;
+        align-items: center;
         grid-column: auto;
         gap: .5rem;
         flex: 1;
@@ -195,3 +235,4 @@ header p {
         padding: 2em;
     }
 }
+
